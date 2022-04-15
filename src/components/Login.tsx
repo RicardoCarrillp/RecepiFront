@@ -6,7 +6,7 @@ import React, { SyntheticEvent, useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import FormContainer from './FormContainer'
 import { useHistory } from "react-router-dom";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 interface props {
   setAuthorized:React.Dispatch<React.SetStateAction<boolean>>;
@@ -42,7 +42,15 @@ const Login = ({ setAuthorized }: props) => {
           });
         } else {
           const User = JSON.stringify(response.data);
-          
+          toast.success('Sesión iniciada con exito!!!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           localStorage.setItem("user",User);
           localStorage.setItem("isAuth","true");
           setAuthorized(true);
@@ -58,15 +66,7 @@ const Login = ({ setAuthorized }: props) => {
   }
   return (
     <>
-      <ToastContainer position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover />
+   
       <FormContainer>
 
         <h1>Login</h1>

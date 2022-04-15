@@ -2,7 +2,7 @@
 import React, { SyntheticEvent } from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 
-import { Container, Nav, Navbar, NavItem } from 'react-bootstrap'
+import { Container, Nav, Navbar, NavItem,Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { RouteComponentProps } from 'react-router';
 
@@ -41,7 +41,7 @@ const Header = ({ authorized }: props) => {
                     {authorized ? (
                         <Nav className="ms-auto">
                             
-                            <Nav.Link href="/" onClick={()=>localStorage.clear()}>Logout</Nav.Link>
+                            <Nav.Link href="/" onClick={()=>localStorage.clear()}><Button variant="outline-danger">Cerrar sesión</Button></Nav.Link>
                           
                             
                         </Nav>

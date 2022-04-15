@@ -6,6 +6,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { Container } from 'react-bootstrap';
+import {  ToastContainer } from 'react-toastify';
 
 // // import IUser from './types/user.type';
 
@@ -29,8 +30,7 @@ const App: React.FC = () => {
   //   setAuthorized(false);
   // }
 
- 
-     
+
   // const config = {
   //   headers:{
   //     Authorization: user.jwt,
@@ -58,6 +58,15 @@ const App: React.FC = () => {
 
     <Router>
       <Header authorized={boolValue } />
+      <ToastContainer position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
       <main>
         <Container>
           <Switch>
