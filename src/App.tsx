@@ -16,6 +16,8 @@ import Home from "./components/Home";
 // import axios from "axios";
 import RecipeSearch from "./components/RecipeSearch";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import HomeLogged from "./components/HomeLogged";
+import RandomRecipe from "./components/RandomRecipe";
 
 
 const App: React.FC = () => {
@@ -71,14 +73,19 @@ const App: React.FC = () => {
         <Container>
           <Switch>
           <Route path="/" exact component={Home}/>
-          <ProtectedRoutes isAuth={boolValue} path="/home" component={RecipeSearch} />
+          <ProtectedRoutes isAuth={boolValue} path="/home" component={HomeLogged} />
+          <ProtectedRoutes isAuth={boolValue} path="/search" component={RecipeSearch} />
+          <ProtectedRoutes isAuth={boolValue} path="/random-recipe" component={RandomRecipe} />
           <Route path="/login" exact component={()=><Login setAuthorized={setAuthorized} />}/>
           <Route path="/singup" exact component={Register}/>
           </Switch>
         </Container>
-
-      </main>
+        <div className="footer-copyright text-center py-3 ">
       <Footer />
+      </div>
+      </main> 
+     
+   
     </Router>
 
 

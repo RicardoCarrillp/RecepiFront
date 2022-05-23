@@ -3,7 +3,7 @@
 import axios from 'axios';
 // eslint-disable-next-line no-unused-vars
 import React, { SyntheticEvent, useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Spinner } from 'react-bootstrap'
 import FormContainer from './FormContainer'
 import { useHistory } from "react-router-dom";
 import { toast } from 'react-toastify';
@@ -16,9 +16,11 @@ const Login = ({ setAuthorized }: props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [disabled, setDisabled] = useState(false);
   // const logged=JSON.parse(localStorage.getItem('user')!)
   const history=useHistory()
   const submitHandler = (e: SyntheticEvent) => {
+    setDisabled(true);
     e.preventDefault();
     // eslint-disable-next-line no-console
       
@@ -27,6 +29,7 @@ const Login = ({ setAuthorized }: props) => {
       pass: password
     })
       .then((response) => {
+        setDisabled(false);
         console.log(response);
         console.log(response.data);
         if (response.data === 'Email o contraseña incorrecta') {
@@ -57,6 +60,7 @@ const Login = ({ setAuthorized }: props) => {
           history.push("/home") ;
         }
       }, (error) => {
+        setDisabled(false);
         console.log(error);
       });
 
@@ -87,9 +91,20 @@ const Login = ({ setAuthorized }: props) => {
               onChange={e => setPassword(e.target.value)} />
           </Form.Group>
 
-          <Button variant="primary" type="submit" disabled={!email || !password}>
+{(disabled?     <Button variant="primary" disabled>
+    <Spinner
+      as="span"
+      animation="border"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+    />
+
+  </Button>:<Button variant="primary" type="submit" disabled={!email || !password}>
             Submit
-          </Button>
+          </Button>)}
+          
+     
         </Form>
       </FormContainer>
     </>

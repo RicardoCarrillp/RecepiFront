@@ -1,8 +1,15 @@
+import Carrousel from "./Carrousel/Carrousel"
 
 
 const Home=() =>{
   return (
-   <h1>WELCOME TO RECEPI</h1>
+  
+
+   <>
+    <h1>WELCOME TO RECEPI</h1>
+    <Carrousel/>
+   </>
+
 
   
   )

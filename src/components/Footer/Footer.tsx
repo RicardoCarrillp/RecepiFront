@@ -1,14 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-
 import {Container,Row,Col}from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <footer>
+    <footer >
       <Container>
         <Row>
-          <Col className="text-center py-3">
+          <Col  className="text-center py-3 ">
             Copyright &copy; Recepi
           </Col>
         </Row>
