@@ -17,6 +17,9 @@ const Register = () => {
 
   const history = useHistory();
 
+
+  
+
   const submitHandler = (e: SyntheticEvent) => {
     e.preventDefault();
     setDisabled(true);

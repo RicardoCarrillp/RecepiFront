@@ -4,7 +4,7 @@ import {  Route,BrowserRouter as Router, Switch  } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 import { Container } from 'react-bootstrap';
 import {  ToastContainer } from 'react-toastify';
 
@@ -80,9 +80,9 @@ const App: React.FC = () => {
           <Route path="/singup" exact component={Register}/>
           </Switch>
         </Container>
-        <div className="footer-copyright text-center py-3 ">
+        {/* <div className="footer-copyright text-center py-3 ">
       <Footer />
-      </div>
+      </div> */}
       </main> 
      
    

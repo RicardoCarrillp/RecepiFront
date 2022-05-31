@@ -1,4 +1,3 @@
-import Carrousel from "./Carrousel/Carrousel"
 
 
 const Home=() =>{
@@ -6,8 +5,7 @@ const Home=() =>{
   
 
    <>
-    <h1>WELCOME TO RECEPI</h1>
-    <Carrousel/>
+    <h1>Bienvenido a Recepi, inicia sesion o registrate!!!</h1>
    </>
 
 
