@@ -2,7 +2,12 @@
 
 const Home=() =>{
   return (
-   <h1>WELCOME TO RECEPI</h1>
+  
+
+   <>
+    <h1>Bienvenido a Recepi, inicia sesion o registrate!!!</h1>
+   </>
+
 
   
   )

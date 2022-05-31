@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 import { useState, SyntheticEvent } from 'react';
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Spinner } from 'react-bootstrap'
 import { useHistory } from 'react-router';
 import { toast,  } from 'react-toastify';
 import FormContainer from './FormContainer'
@@ -13,11 +13,16 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [disabled, setDisabled] = useState(false);
 
   const history = useHistory();
 
+
+  
+
   const submitHandler = (e: SyntheticEvent) => {
     e.preventDefault();
+    setDisabled(true);
     // eslint-disable-next-line no-console
    
     axios.post('https://recepiv1.herokuapp.com/register', {
@@ -30,7 +35,7 @@ const Register = () => {
 
 
         if (response.data === `Duplicate entry '${email}' for key 'email_UNIQUE'`) {
-
+          setDisabled(false);
           toast.error(`El correo '${email}' ya está en uso`, {
             position: "top-center",
             autoClose: 5000,
@@ -56,7 +61,7 @@ const Register = () => {
         }
 
       }, (error) => {
-
+        setDisabled(false);
         console.log(error);
       });
 
@@ -92,10 +97,19 @@ const Register = () => {
               value={password}
               onChange={e => setPassword(e.target.value)} />
           </Form.Group>
+          {(disabled?     <Button variant="primary" disabled>
+    <Spinner
+      as="span"
+      animation="border"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+    />
 
+  </Button>:
           <Button variant="primary" type="submit" disabled={!email || !password || !username}>
             Submit
-          </Button>
+          </Button>)}
         </Form>
       </FormContainer> </>
   )
